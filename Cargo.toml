@@ -9,13 +9,16 @@ license = "Zlib OR Apache-2.0 OR MIT"
 [features]
 cargo_check = ["fermium/cargo_check"]
 vulkan = ["raw_vulkan_handle", "fermium/vulkan"]
+static_bundled_build = ["fermium/static_bundled_build"]
 
 [dependencies]
-fermium = "22605.0.0"
 bytemuck = "1"
 raw_vulkan_handle = { version = "0.1.1", optional = true }
 zstring = { version = "0.2.4", features = ["alloc"] }
 pixel_formats = "0.1.5"
+
+[dependencies.fermium]
+git = "https://github.com/hideyosh1/fermium.git"
 
 [target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
 objc = "0.2" # needed to verify that we're on the main thread.
